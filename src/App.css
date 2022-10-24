@@ -4,6 +4,16 @@
   color: darkgreen;
 }
 
+.wrapper {
+  display: flex;
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
 .Mess {
   padding: 30px 50px;
 }
