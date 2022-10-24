@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  font: 3em sans-serif;
+  color: darkgreen;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.Mess {
+  padding: 30px 50px;
+}
+
+.Mess > p:nth-child(1) {
+  font-weight: bold;
+}
+.InputForm {
+  text-align: center;
+}
+
+input {
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
+input:nth-child(2) {
+  width: 500px;
+}
+
+.Btn {
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  background-color: chartreuse;
+  border-radius: 7px;
+  padding: 10px 30px;
+  border: none;
+}
