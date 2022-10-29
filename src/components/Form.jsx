@@ -2,7 +2,6 @@ import "../App.css";
 import { useState } from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
-import { ChatList } from "./Chats";
 
 export const Form = () => {
   const [author, setAutor] = useState("");
@@ -25,26 +24,28 @@ export const Form = () => {
 
   return (
     <>
-      <div className="wrapper">
-        <ChatList />
-        <div className="messageList">
+      <div className="wrapper-column">
+        <div className="message-header">
+          <h3>Список сообщений</h3>
+        </div>
+        <div className="message-list">
           {messageList.map((message, idx) => (
-            <div className="Mess" key={idx}>
+            <div className="mess" key={idx}>
               <p>Автор: {message.author}</p>
               <p>Сообщение: {message.value}</p>
               <hr />
             </div>
           ))}
         </div>
-      </div>
 
-      <Input
-        changeMess={handleChangeMess}
-        changeAut={handleChangeAut}
-        value={value}
-        author={author}
-      />
-      <Button click={handleClick} />
+        <Input
+          changeMess={handleChangeMess}
+          changeAut={handleChangeAut}
+          value={value}
+          author={author}
+        />
+        <Button click={handleClick} />
+      </div>
     </>
   );
 };

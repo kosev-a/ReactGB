@@ -1,27 +1,55 @@
-.App {
+.wrapper {
+  display: flex;
+}
+
+.wrapper-column {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+header {
+  background-color: blue;
+  width: 15%;
+  height: 100vh;
+}
+
+header > ul > li > a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 34px;
+}
+
+header > ul > li > a:hover {
+  text-decoration:underline;
+  text-decoration-color: black;
+}
+
+header > ul > li {
+  list-style: none;
+  padding: 10px;
+}
+
+.message-header {
   text-align: center;
   font: 3em sans-serif;
   color: darkgreen;
 }
 
-.wrapper {
-  display: flex;
-}
-
-.messageList {
+.message-list {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 75%;
 }
 
-.Mess {
+.mess {
   padding: 30px 50px;
 }
 
-.Mess > p:nth-child(1) {
+.mess > p:nth-child(1) {
   font-weight: bold;
 }
-.InputForm {
+.input-form {
   text-align: center;
 }
 
@@ -36,7 +64,7 @@ input:nth-child(2) {
   width: 500px;
 }
 
-.Btn {
+.btn {
   text-align: center;
   margin: 20px;
 }

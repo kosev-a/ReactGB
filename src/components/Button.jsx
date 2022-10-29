@@ -1,6 +1,6 @@
 export const Button = (props) => {
   return (
-    <div className="Btn">
+    <div className="btn">
       <button onClick={props.click}>Отправить</button>
     </div>
   );
