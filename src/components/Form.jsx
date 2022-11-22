@@ -1,17 +1,17 @@
-import "../App.css";
-import { useState } from "react";
-import { Input } from "./Input";
-import { Button } from "./Button";
+import '../App.css';
+import { useState } from 'react';
+import { Input } from './Input';
+import { Button } from './Button';
 
 export const Form = () => {
-  const [author, setAutor] = useState("");
-  const [value, setValue] = useState("");
+  const [author, setAutor] = useState('');
+  const [value, setValue] = useState('');
   const [messageList, setMessageList] = useState([]);
 
   const handleClick = () => {
     setMessageList([...messageList, { author, value }]);
-    setValue("");
-    setAutor("");
+    setValue('');
+    setAutor('');
   };
 
   const handleChangeMess = (ev) => {

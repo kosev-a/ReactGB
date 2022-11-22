@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { useParams, Navigate } from "react-router-dom";
-import { ChatList } from "./ChatList";
+import { useState } from 'react';
+import { useParams, Navigate } from 'react-router-dom';
+import { ChatList } from './ChatList';
 import { Form } from '../components/Form';
 import '../App.css';
 
 export const initialChats = [
   {
     id: 1,
-    name: "Chat1",
-    messages: [{ text: "FirstMessage", author: "Alex" }],
+    name: 'Chat1',
+    messages: [{ text: 'FirstMessage', author: 'Alex' }],
   },
   {
     id: 2,
-    name: "Chat2",
-    messages: [{ text: "SomeMessage", author: "Mike" }],
+    name: 'Chat2',
+    messages: [{ text: 'SomeMessage', author: 'Mike' }],
   },
   {
     id: 3,
-    name: "Chat3",
-    messages: [{ text: "Привет!", author: "Liza" }],
+    name: 'Chat3',
+    messages: [{ text: 'Привет!', author: 'Liza' }],
   },
 ];
 

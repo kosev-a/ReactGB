@@ -1,6 +1,6 @@
 import './NoChat.css';
 
-import { ChatList } from "./ChatList";
+import { ChatList } from './ChatList';
 
 export const NoChat = ({ chats }) => {
   return (
