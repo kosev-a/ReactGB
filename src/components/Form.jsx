@@ -1,41 +1,44 @@
-import '../App.css';
-import { useState } from 'react';
-import { Input } from './Input';
-import { Button } from './Button';
+import "../App.css";
+import { useState } from "react";
+import { Input } from "./Input";
+import { Button } from "./Button";
+import { useDispatch, useSelector } from "react-redux";
+import { addMessage } from "../store/messages/actions";
+import { useParams } from "react-router-dom";
+import { MessageList } from "./MessageList";
 
 export const Form = () => {
-  const [author, setAutor] = useState('');
-  const [value, setValue] = useState('');
-  const [messageList, setMessageList] = useState([]);
+  const params = useParams();
+  const { chatId } = params;
+  const [author, setAutor] = useState("");
+  const [value, setValue] = useState("");
+
+  const dispatch = useDispatch();
+
+  const onAddMessage = (message, author) => {
+    dispatch(addMessage(chatId, message, author));
+  };
 
   const handleClick = () => {
-    setMessageList([...messageList, { author, value }]);
-    setValue('');
-    setAutor('');
+    onAddMessage(value, author);
+    setValue("");
+    setAutor("");
   };
 
-  const handleChangeMess = (ev) => {
-    setValue(ev.target.value);
+  const handleChangeMess = (e) => {
+    setValue(e.target.value);
   };
 
-  const handleChangeAut = (ev) => {
-    setAutor(ev.target.value);
+  const handleChangeAut = (e) => {
+    setAutor(e.target.value);
   };
 
   return (
     <>
+      <MessageList />
       <div className="wrapper-column">
         <div className="message-header">
           <h3>Список сообщений</h3>
-        </div>
-        <div className="message-list">
-          {messageList.map((message, idx) => (
-            <div className="mess" key={idx}>
-              <p>Автор: {message.author}</p>
-              <p>Сообщение: {message.value}</p>
-              <hr />
-            </div>
-          ))}
         </div>
 
         <Input

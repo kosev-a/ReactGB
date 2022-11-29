@@ -1,39 +1,27 @@
-import { useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import { ChatList } from './ChatList';
-import { Form } from '../components/Form';
-import '../App.css';
-
-export const initialChats = [
-  {
-    id: 1,
-    name: 'Chat1',
-    messages: [{ text: 'FirstMessage', author: 'Alex' }],
-  },
-  {
-    id: 2,
-    name: 'Chat2',
-    messages: [{ text: 'SomeMessage', author: 'Mike' }],
-  },
-  {
-    id: 3,
-    name: 'Chat3',
-    messages: [{ text: 'Привет!', author: 'Liza' }],
-  },
-];
+import { useParams, Navigate } from "react-router-dom";
+import { ChatList } from "./ChatList";
+import "../App.css";
+import { shallowEqual, useSelector } from "react-redux";
+import { MessageList } from "../components/MessageList";
+import { Form } from "../components/Form";
+import { getChatList } from "../store/chats/selectors";
+import { getMessageList } from "../store/messages/selectors";
 
 export const Chats = () => {
   const { chatId } = useParams();
-  const [chats, setChats] = useState(initialChats);
-
+  const chats = useSelector(getChatList, shallowEqual);
+  const messages = useSelector(getMessageList, shallowEqual);
   if (!chatId || !chats.find((item) => item.id == chatId)) {
     return <Navigate to="/nochat" />;
   }
 
   return (
-    <div className="wrapper">
+    <>
       <ChatList chats={chats} />
-      <Form />
-    </div>
+      <MessageList messages={messages[chatId]} />
+      <div className="form">
+        <Form />
+      </div>
+    </>
   );
 };

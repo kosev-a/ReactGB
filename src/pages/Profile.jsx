@@ -1,10 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { useCallback } from 'react';
 import './Profile.css';
 import { toggleCheckbox } from '../store/profile/actions';
+import { getProfile } from '../store/profile/selectors';
 
 export const Profile = () => {
-  const state = useSelector((state) => state);
+  const state = useSelector(getProfile, shallowEqual);
   const dispatch = useDispatch();
 
   const setShowName = useCallback(() => {

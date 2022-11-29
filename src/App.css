@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .wrapper-column {
@@ -12,6 +13,8 @@ header {
   background-color: blue;
   width: 15%;
   height: 100vh;
+  bottom: 0;
+  top: 0;
 }
 
 header > ul > li > a {
@@ -74,4 +77,8 @@ button {
   border-radius: 7px;
   padding: 10px 30px;
   border: none;
+}
+
+.form {
+  bottom: 10px;  
 }
