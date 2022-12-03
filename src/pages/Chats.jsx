@@ -3,7 +3,7 @@ import { ChatList } from "./ChatList";
 import "../App.css";
 import { shallowEqual, useSelector } from "react-redux";
 import { MessageList } from "../components/MessageList";
-import { Form } from "../components/Form";
+import { FormContainer } from "../components/FormContainer";
 import { getChatList } from "../store/chats/selectors";
 import { getMessageList } from "../store/messages/selectors";
 
@@ -17,10 +17,10 @@ export const Chats = () => {
 
   return (
     <>
-      <ChatList chats={chats} />
+      <ChatList />
       <MessageList messages={messages[chatId]} />
       <div className="form">
-        <Form />
+        <FormContainer />
       </div>
     </>
   );
