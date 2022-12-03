@@ -1,0 +1,8 @@
+.no-chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-chat > p {
+  text-align: center;
+}
