@@ -1,18 +1,17 @@
-import "../App.css";
-import { useState, useCallback } from "react";
-import { Input } from "./Input";
-import { Button } from "./Button";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { MessageList } from "./MessageList";
-import { addMessageWithThunk } from "../store/messages/actions";
-import { Form } from "./Form";
+import '../App.css';
+import { useState, useCallback } from 'react';
+import { Input } from './Input';
+import { Button } from './Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { MessageList } from './MessageList';
+import { addMessageWithThunk } from '../store/messages/actions';
 
 export const FormContainer = () => {
   const params = useParams();
   const { chatId } = params;
-  const [author, setAutor] = useState("");
-  const [value, setValue] = useState("");
+  const [author, setAutor] = useState('');
+  const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
 
@@ -25,8 +24,8 @@ export const FormContainer = () => {
 
   const handleClick = () => {
     onAddMessage(value, author);
-    setValue("");
-    setAutor("");
+    setValue('');
+    setAutor('');
   };
 
   const handleChangeMess = (e) => {
@@ -39,7 +38,6 @@ export const FormContainer = () => {
 
   return (
     <div>
-      <MessageList />
       <Input
         changeMess={handleChangeMess}
         changeAut={handleChangeAut}
@@ -47,7 +45,6 @@ export const FormContainer = () => {
         author={author}
       />
       <Button click={handleClick} />
-      <Form />
     </div>
   );
 };

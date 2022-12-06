@@ -1,11 +1,13 @@
-import { useParams, Navigate } from "react-router-dom";
-import { ChatList } from "./ChatList";
-import "../App.css";
-import { shallowEqual, useSelector } from "react-redux";
-import { MessageList } from "../components/MessageList";
-import { FormContainer } from "../components/FormContainer";
-import { getChatList } from "../store/chats/selectors";
-import { getMessageList } from "../store/messages/selectors";
+import { useParams, Navigate } from 'react-router-dom';
+import { ChatList } from './ChatList';
+import '../App.css';
+import { shallowEqual, useSelector } from 'react-redux';
+import { MessageList } from '../components/MessageList';
+import { FormContainer } from '../components/FormContainer';
+import { getChatList } from '../store/chats/selectors';
+import { getMessageList } from '../store/messages/selectors';
+import { Form } from '../components/Form';
+import './Chats.css';
 
 export const Chats = () => {
   const { chatId } = useParams();
@@ -16,12 +18,17 @@ export const Chats = () => {
   }
 
   return (
-    <>
-      <ChatList />
-      <MessageList messages={messages[chatId]} />
+    <div>
+      <div className="wrapper">
+        <ChatList />
+        <div className="messages">
+          <Form />
+          <MessageList messages={messages[chatId]} />
+        </div>
+      </div>
       <div className="form">
         <FormContainer />
       </div>
-    </>
+    </div>
   );
 };

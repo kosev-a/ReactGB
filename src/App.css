@@ -11,7 +11,7 @@
 
 header {
   background-color: blue;
-  width: 15%;
+  width: 200px;
   height: 100vh;
   bottom: 0;
   top: 0;
@@ -24,7 +24,7 @@ header > ul > li > a {
 }
 
 header > ul > li > a:hover {
-  text-decoration:underline;
+  text-decoration: underline;
   text-decoration-color: black;
 }
 
@@ -34,6 +34,7 @@ header > ul > li {
 }
 
 .message-header {
+  margin: 10px 40px;
   text-align: center;
   font: 3em sans-serif;
   color: darkgreen;
@@ -42,7 +43,6 @@ header > ul > li {
 .message-list {
   display: flex;
   flex-direction: column;
-  width: 75%;
 }
 
 .mess {
@@ -80,5 +80,6 @@ button {
 }
 
 .form {
-  bottom: 10px;  
+  margin-left: auto;
+  margin-right: auto;
 }

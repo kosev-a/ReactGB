@@ -1,0 +1,15 @@
+.news {
+  display: block;
+  min-width: 85%;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: darkslateblue;
+}
