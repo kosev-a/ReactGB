@@ -1,0 +1,8 @@
+.no-found {
+    width: 80%;
+}
+
+.no-found > p {
+    margin: 50px;
+    text-align: center;
+}
