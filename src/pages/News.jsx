@@ -1,13 +1,13 @@
-import { CircularProgress } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getNews } from "../store/news/actions";
+import { CircularProgress } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getNews } from '../store/news/actions';
 import {
   selectNews,
   selectNewsLoading,
   selectError,
-} from "../store/news/selectors";
-import "./News.css";
+} from '../store/news/selectors';
+import './News.css';
 
 export const News = () => {
   const dispatch = useDispatch();

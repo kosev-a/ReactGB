@@ -3,7 +3,7 @@ export const GET_NEWS_SUCCESS = 'NEWS::GET_NEWS_SUCCESS';
 export const GET_NEWS_FAILURE = 'NEWS::GET_NEWS_FAILURE';
 
 const apiUrl = 'https://inshorts.deta.dev/news?category=science';
-// data format like this: 
+// data format like this:
 // {"category":"science",
 // "data":
 //   [{"author":"Pragya Swastik",

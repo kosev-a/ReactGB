@@ -1,7 +1,8 @@
-import { ADD_MESSAGE } from './actions';
-import { DELETE_MESSAGES_BY_CHAT_ID } from './actions';
+import { ADD_MESSAGE } from "./actions";
+import { CHANGE_MESSAGES } from "./actions";
+import { DELETE_MESSAGES_BY_CHAT_ID } from "./actions";
 const initialState = {
-  messageList: [],
+  messageList: {},
 };
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,11 +15,20 @@ export const messagesReducer = (state = initialState, action) => {
           [action.chatId]: [
             ...currentList,
             {
-              id: `${action.chatId}id_${currentList.length}`,
+              id: `${chatId}id_msg-${Date.now()}`,
               message: action.message,
               author: action.author,
             },
           ],
+        },
+      };
+    }
+    case CHANGE_MESSAGES: {
+      return {
+        ...state,
+        messageList: {
+          ...state.messageList,
+          [action.payload.chatId]: action.payload.messageList,
         },
       };
     }
