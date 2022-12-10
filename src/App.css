@@ -1,0 +1,85 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper-column {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+header {
+  background-color: blue;
+  width: 200px;
+  height: 100vh;
+  bottom: 0;
+  top: 0;
+}
+
+header > ul > li > a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 34px;
+}
+
+header > ul > li > a:hover {
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
+header > ul > li {
+  list-style: none;
+  padding: 10px;
+}
+
+.message-header {
+  margin: 10px 40px;
+  text-align: center;
+  font: 3em sans-serif;
+  color: darkgreen;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mess {
+  padding: 30px 50px;
+}
+
+.mess > p:nth-child(1) {
+  font-weight: bold;
+}
+.input-form {
+  text-align: center;
+}
+
+input {
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
+input:nth-child(2) {
+  width: 500px;
+}
+
+.btn {
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  background-color: chartreuse;
+  border-radius: 7px;
+  padding: 10px 30px;
+  border: none;
+}
+
+.form {
+  margin-left: auto;
+  margin-right: auto;
+}
