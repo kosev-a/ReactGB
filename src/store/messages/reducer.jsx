@@ -27,8 +27,7 @@ export const messagesReducer = (state = initialState, action) => {
       return {
         ...state,
         messageList: {
-          ...state.messageList,
-          [action.payload.chatId]: action.payload.messageList,
+          ...action.payload,
         },
       };
     }

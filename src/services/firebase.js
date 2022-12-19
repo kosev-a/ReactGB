@@ -29,3 +29,4 @@ export const logout = () => signOut(auth);
 
 export const db = getDatabase(app);
 export const messagesRef = ref(db, "messages");
+export const getMessageByIdRef = (id) => ref(db, `messages/${id}`);

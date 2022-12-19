@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getMessageList } from "../store/messages/selectors";
 import { messagesRef } from "../services/firebase";
+import { push, onValue } from "firebase/database";
 import {
-  push,
-  onValue,
-} from "firebase/database";
-import { addMessageWithThunk } from "../store/messages/actions";
+  addMessageWithFirebase,
+  addMessageWithThunk,
+  initMessageTracking,
+} from "../store/messages/actions";
 
 export const FormContainer = () => {
   const params = useParams();
@@ -22,26 +23,15 @@ export const FormContainer = () => {
 
   const dispatch = useDispatch();
 
-  const onAddMessage = (message, author) => {
-    push(messagesRef, {
-      chatId,
-      message,
-      author,
-    });
-  };
+  const onAddMessage = useCallback(
+    (message, author) => {
+      dispatch(addMessageWithFirebase(chatId, message, author));
+    },
+    [chatId]
+  );
 
   useEffect(() => {
-    onValue(messagesRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        const newMsgs = Object.entries(data).map((item) => ({
-          id: item[0],
-          ...item[1]
-        }));
-        addMessageWithThunk(newMsgs.id, newMsgs.message)
-      }
-      
-    })
+    dispatch(initMessageTracking());
   }, []);
 
   const handleClick = () => {

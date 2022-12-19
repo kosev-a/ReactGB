@@ -1,12 +1,14 @@
-import { db } from "../../services/firebase";
 import { messagesRef } from "../../services/firebase";
 import {
   push,
   onChildAdded,
   onChildChanged,
-  ref,
+  remove,
   set,
+  onValue,
+  onChildRemoved,
 } from "firebase/database";
+import { getMessageByIdRef } from "../../services/firebase";
 
 export const ADD_MESSAGE = "MESSAGES::ADD_MESSAGE";
 export const CHANGE_MESSAGES = "MESSAGES::CHANGE_MESSAGES";
@@ -35,16 +37,28 @@ export const deleteMessageByChatId = (chatId) => ({
 });
 
 const getMessagesFromSnapshot = (snapshot) => {
-  const messageList = [];
-
-  snapshot.forEach((mes) => {
-    messageList.push(mes.val());
+  let newMsgs = {};
+  onValue(messagesRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      newMsgs = Object.entries(data).map((item) => ({
+        id: item[0],
+        ...item[1],
+      }));
+    }
   });
-
-  return { chatId: snapshot.key, messageList };
+  return newMsgs;
 };
 
-export const initMessageTracking = () => (dispatch) => {
+export const addMessageWithFirebase = (chatId, message, author) => async () => {
+  push(messagesRef, {
+    chatId,
+    message,
+    author,
+  });
+};
+
+export const initMessageTracking = (snapshot) => (dispatch) => {
   onChildAdded(messagesRef, (snapshot) => {
     const payload = getMessagesFromSnapshot(snapshot);
     dispatch({
@@ -60,8 +74,16 @@ export const initMessageTracking = () => (dispatch) => {
       payload,
     });
   });
+
+  onChildRemoved(messagesRef, (snapshot) => {
+    const payload = getMessagesFromSnapshot(snapshot);
+    dispatch({
+      type: CHANGE_MESSAGES,
+      payload,
+    });
+  });
 };
 
-export const deleteMessageWithFirebase = (chatId, messageId) => async () => {
-  ref(db, "messages").child(chatId).child(messageId).remove();
+export const deleteMessageWithFirebase = (messageId) => async () => {
+  remove(getMessageByIdRef(messageId));
 };
