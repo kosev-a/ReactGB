@@ -1,0 +1,7 @@
+.home {
+    width: 80%;
+}
+
+.home > h2 {
+    text-align: center;
+}
